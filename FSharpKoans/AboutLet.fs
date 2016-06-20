@@ -82,4 +82,4 @@ module ``about let`` =
         //      to reuse the name of a value in some cases using "shadowing".
         let x = 100
          
-        AssertEquality x __
+        AssertEquality x 100
