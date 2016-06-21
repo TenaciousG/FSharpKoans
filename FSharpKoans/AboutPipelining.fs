@@ -63,4 +63,4 @@ module ``about pipelining`` =
             |> List.filter isEven
             |> List.map square
 
-        AssertEquality result []
+        AssertEquality result [0;4;16]
