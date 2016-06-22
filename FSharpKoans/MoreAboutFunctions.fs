@@ -36,14 +36,14 @@ module ``more about functions`` =
         (* F#'s lightweight syntax allows you to call both functions as if there
            was only one *)
         let simpleResult = add 2 4
-        AssertEquality simpleResult __
+        AssertEquality simpleResult 6
 
         (* ...but you can also pass only one argument at a time to create
            residual functions. This technique is known as partial appliction. *)
         let addTen = add 10
         let fancyResult = addTen 14
 
-        AssertEquality fancyResult __
+        AssertEquality fancyResult 24
 
         //NOTE: Functions written in this style are said to be curried.
 
@@ -58,8 +58,8 @@ module ``more about functions`` =
         let unluckyNumber = addSeven 6
         let luckyNumber = addSeven 0
 
-        AssertEquality unluckyNumber __
-        AssertEquality luckyNumber __
+        AssertEquality unluckyNumber 13
+        AssertEquality luckyNumber 7
 
     [<Koan>]
     let NonCurriedFunctions() =
