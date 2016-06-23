@@ -76,7 +76,7 @@ module ``more about functions`` =
 
         let result = add(5, 40)
 
-        AssertEquality result __
+        AssertEquality result 45
 
         (* THINK ABOUT IT: You learned earlier that functions with multiple 
                            return values are really just functions that return

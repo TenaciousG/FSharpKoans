@@ -60,6 +60,19 @@ module ``about the stock example`` =
 
     [<Koan>]
     let YouGotTheAnswerCorrect() =
+        let getDateAndVariance row = 
+            let splitCommas (x:string) = 
+                x.Split([|','|])
+            let splitRow = splitCommas row
+            let date = splitRow.[0]
+            let openPrice = System.Double.Parse splitRow.[1]
+            let closePrice = System.Double.Parse splitRow.[3]
+            [date;(abs openPrice-closePrice)]
+
+
+
+        let varianceBetweenOpenAndCloseList = List.map getDateAndVariance stockData
+        
         let result =  __
         
         AssertEquality "2012-03-13" result
