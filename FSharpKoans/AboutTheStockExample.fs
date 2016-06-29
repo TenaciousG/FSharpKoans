@@ -65,14 +65,24 @@ module ``about the stock example`` =
                 x.Split([|','|])
             let splitRow = splitCommas row
             let date = splitRow.[0]
-            let openPrice = System.Double.Parse splitRow.[1]
-            let closePrice = System.Double.Parse splitRow.[3]
-            [date;(abs openPrice-closePrice)]
+            let openPrice = System.Double.Parse (splitRow.[1], System.Globalization.CultureInfo.InvariantCulture)
+            let closePrice = System.Double.Parse (splitRow.[4], System.Globalization.CultureInfo.InvariantCulture)
+            let variance = abs (openPrice - closePrice)
+            (date,variance)
 
 
 
-        let varianceBetweenOpenAndCloseList = List.map getDateAndVariance stockData
+        let varianceBetweenOpenAndCloseList = 
+            stockData
+            |> Seq.skip 1
+            |> Seq.map getDateAndVariance
+
+        let getMaxVarianceFromTuple (x, y) = y
+
+
+        let maxVarianceRow = Seq.maxBy getMaxVarianceFromTuple varianceBetweenOpenAndCloseList
         
-        let result =  __
+        
+        let result = fst maxVarianceRow
         
         AssertEquality "2012-03-13" result
